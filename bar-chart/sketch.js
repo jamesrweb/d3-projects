@@ -1,8 +1,8 @@
-const COUNTRY_DATA = [
-  { id: 1, value: 8.2, region: "Scotland" },
-  { id: 2, value: 2.8, region: "Ireland" },
-  { id: 3, value: 4.7, region: "Wales" },
-  { id: 4, value: 84.25, region: "England" }
+const UK_POPULATION_DATA = [
+  { id: 1, value: 8.2, nation: "Scotland" },
+  { id: 2, value: 2.8, nation: "Ireland" },
+  { id: 3, value: 4.7, nation: "Wales" },
+  { id: 4, value: 84.25, nation: "England" }
 ];
 
 const BAR_WIDTH = 50;
@@ -27,7 +27,7 @@ const container = d3
     0, 0, CHART_WIDTH, CHART_HEIGHT
   ])
   .attr("font-size", CHART_FONT_SIZE);
-const title = "Population of the United Kingdom by nation";
+const title = "Population of the United Kingdom by Nation";
 container
   .append("title")
   .text(title);
@@ -45,19 +45,21 @@ container
 
 const bars = container
   .selectAll()
-  .data(COUNTRY_DATA)
+  .data(UK_POPULATION_DATA)
   .enter()
   .append("rect");
 
 bars
   .append("title")
-  .text(({ value, region }) => (
-    `The population of ${region} is ${value}`
+  .text(({ value, nation }) => (
+    `The population of ${nation} is ${value}`
   ));
 
 const xScale = d3
   .scaleBand()
-  .domain(COUNTRY_DATA.map(d => d.region))
+  .domain(
+    UK_POPULATION_DATA.map(d => d.nation)
+  )
   .rangeRound([
     CHART_MARGIN.left,
     CHART_WIDTH - CHART_MARGIN.right
@@ -72,7 +74,7 @@ const yScale = d3
     CHART_MARGIN.top
   ]);
 
-bars.attr("x", ({ region }) => xScale(region));
+bars.attr("x", ({ nation }) => xScale(nation));
 bars.attr("y", ({ value }) => yScale(value));
 bars.attr("width", xScale.bandwidth())
 bars.attr("height", ({ value }) => (
