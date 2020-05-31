@@ -5,7 +5,6 @@ const UK_POPULATION_DATA = [
   { id: 4, value: 84.25, nation: "England" }
 ];
 
-const BAR_WIDTH = 50;
 const BAR_PADDING = 0.1;
 const CHART_WIDTH = 500;
 const CHART_HEIGHT = 500;
