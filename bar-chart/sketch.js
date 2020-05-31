@@ -25,11 +25,8 @@ const container = d3
   .attr("viewBox", [
     0, 0, CHART_WIDTH, CHART_HEIGHT
   ])
-  .attr("font-size", CHART_FONT_SIZE);
-const title = "Population of the United Kingdom by Nation";
-container
-  .append("title")
-  .text(title);
+  .attr("font-size", CHART_FONT_SIZE)
+  .attr("font-family", "sans-serif");
 
 container
   .append("text")
@@ -40,7 +37,7 @@ container
       ${CHART_FONT_SIZE}
     )
   `)
-  .text(title);
+  .text("Population of the United Kingdom by Nation");
 
 const bars = container
   .selectAll()
@@ -51,7 +48,7 @@ const bars = container
 bars
   .append("title")
   .text(({ value, nation }) => (
-    `The population of ${nation} is ${value}`
+    `${nation} has ${value}% of the total population`
   ));
 
 const xScale = d3
@@ -109,7 +106,7 @@ container.append("text")
     "transform",
     `translate(${HALF_WIDTH}, ${CHART_HEIGHT - CHART_FONT_SIZE})`
   )
-  .text("Country");
+  .text("Member Nation");
 
 // y axis
 container
@@ -131,4 +128,4 @@ container.append("text")
       ${HALF_HEIGHT}
     ) rotate(-90)`
   )
-  .text("Population (%)");
+  .text("Population (% of total)");
