@@ -22,6 +22,7 @@ const container = d3
   .select("body")
   .append("svg")
   .style("padding", CHART_MARGIN)
+  .style("max-width", CHART_WIDTH)
   .attr("viewBox", [
     0, 0, CHART_WIDTH, CHART_HEIGHT
   ])
@@ -99,7 +100,6 @@ container
   .attr("font-size", CHART_FONT_SIZE);
 
 // x axis text
-
 container.append("text")
   .style("text-anchor", "middle")
   .attr(

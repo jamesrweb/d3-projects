@@ -8,17 +8,18 @@ const quotes = [
   ["I have a fine sense of the ridiculous, but no sense of humor.", "Edward Albee"]
 ];
 
-const as = "blockquote";
+function render(quote) {
+  return `
+    "${quote[0]}"
+    <div>
+      <cite>-- ${quote[1]}</cite>
+    </div>
+  `;
+}
 
 d3.select(".output")
   .selectAll()
   .data(quotes)
   .enter()
-  .append(as)
-  .html(
-    quote => `
-    "${quote[0]}"
-    <div>
-      <cite>-- ${quote[1]}</cite>
-    </div>
-  `);
+  .append("blockquote")
+  .html(render);
